@@ -1,66 +1,68 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Book Store
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Route documentation
 
-## About Laravel
+-   ### Public Routes
+    -   `/`: Landing page for bookstore.
+    -   `/books/published`: Search the bookstore model for books.
+    -   `/books/:book`: View book details
+-   ### Admin Routes
+    -   `/books/`: Book listing page.
+    -   `/books/create`: Display the create new book page.
+    -   `/books/store`: Add new book in the database.
+    -   `/books/all`: Fetch data to display a list of books in the dashboard.
+    -   `/books/:book/edit`: Display the edit book page.
+    -   `/books/:book/update`: Update an existing book.
+    -   `/books/delete`: Delete existing book.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Setup
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   Clone the repository
+-   cd into the repository directory
+-   Create a new database
+-   Copy the sample `.env` file and change the values for the below keys:
+    -   DB_DATABASE=bookstore
+    -   DB_USERNAME=root
+    -   DB_PASSWORD=
+-   Add following variables to your `.env` file and change the values for the below keys (if needed):
+    -   SCOUT_DRIVER=meilisearch
+    -   MEILISEARCH_HOST=http://127.0.0.1:7700
+    -   MEILISEARCH_KEY=masterKey
+-   Run `composer install` & `npm install`
+-   Run `php artisan migrate --seed`
+-   Run `php artisan key:generate`
+-   Run `php artisan storage:link`
+-   Run `php artisan scout:import "App\Models\Book"`
+-   Run `php artisan serve`
+-   Open a new terminal tab in the same location and run `npm run dev`
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   Open `localhost:8000` in your browser to load the application
 
-## Learning Laravel
+## Sample Admin Login Credential
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   Email: admin@bookstore.com
+-   Passwword: password
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+#### Landing Page
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+![Landing Page](./SampleImages/LandingPage.png)
 
-## Laravel Sponsors
+#### Book Details Page
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+![Book Details Page](./SampleImages/BookDetailsPage.png)
 
-### Premium Partners
+#### Book Listing Page
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+![Book Listing Page](./SampleImages/BookListingPage.png)
 
-## Contributing
+#### Delete Book Confirmation
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+![Delete Book Confirmation](./SampleImages/DeleteBookConfirmation.png)
 
-## Code of Conduct
+#### Add Book Page
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+![Add Book Page](./SampleImages/AddBookPage.png)
 
-## Security Vulnerabilities
+#### Edit Book Page
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+![Edit Book Page](./SampleImages/EditBookPage.png)
