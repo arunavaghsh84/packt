@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card mb-3">
-                    <img src="{{ $book->image ? '/storage/images/' . $book->image : 'https://picsum.photos/1295/310' }}"
+                    <img src="{{ $book->image ? '/storage/images/' . $book->image : 'https://placehold.co/1295x310' }}"
                         width="1295" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ $book->title }}</h5>

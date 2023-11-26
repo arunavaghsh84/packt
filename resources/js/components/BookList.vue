@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-3 mb-3">
+                <div class="col-md-2 mb-3">
                     <select
                         class="form-select"
                         id="author"
@@ -19,7 +19,7 @@
                         </option>
                     </select>
                 </div>
-                <div class="col-md-3 mb-3">
+                <div class="col-md-2 mb-3">
                     <select
                         class="form-select"
                         id="category"
@@ -35,7 +35,7 @@
                         </option>
                     </select>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <select
                         class="form-select"
                         id="publisher"
@@ -51,19 +51,25 @@
                         </option>
                     </select>
                 </div>
-                <div class="col-md-3 d-flex mb-3">
+                <div class="col-md-6 d-flex mb-3 gap-2">
                     <input
-                        class="form-control me-2"
+                        class="form-control"
                         type="search"
                         placeholder="Search"
                         aria-label="Search"
                         v-model="searchText"
                     />
                     <button
-                        class="btn btn-outline-success"
+                        class="btn btn-outline-success w-25"
                         @click="handleSearch"
                     >
                         Search
+                    </button>
+                    <button
+                        class="btn btn-outline-danger w-25"
+                        @click="resetFilter"
+                    >
+                        Reset all
                     </button>
                 </div>
             </div>
@@ -221,6 +227,16 @@ export default {
         },
         handleSearch() {
             this.filter.search = this.searchText;
+        },
+        resetFilter() {
+            this.searchText = "";
+
+            this.filter = {
+                search: "",
+                author_id: "",
+                category_id: "",
+                publisher_id: "",
+            };
         },
         handleDelete(bookId) {
             if (confirm("Do you really want to delete this book?")) {

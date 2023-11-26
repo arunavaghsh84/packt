@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Author;
-use App\Models\Category;
-use App\Models\Publisher;
+use App\Services\BookService;
 
 class HomeController extends Controller
 {
+    public function __construct(protected BookService $bookService)
+    {
+    }
     /**
      * Show the application dashboard.
      *
@@ -15,9 +16,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $authors = Author::orderBy('name')->get(['id', 'name']);
-        $categories = Category::orderBy('name')->get(['id', 'name']);
-        $publishers = Publisher::orderBy('name')->get(['id', 'name']);
+        ['authors' => $authors, 'categories' => $categories, 'publishers' => $publishers] = $this->bookService->getConfig();
 
         return view('home', compact('authors', 'categories', 'publishers'));
     }

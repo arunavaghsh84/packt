@@ -69,19 +69,25 @@
                         </option>
                     </select>
                 </div>
+                <div class="col-md-12 mt-3">
+                    <button
+                        class="btn btn-outline-danger w-100"
+                        @click="resetFilter"
+                    >
+                        Reset all
+                    </button>
+                </div>
             </div>
         </div>
         <div class="col-md-9">
             <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col" v-for="(book, index) in books" :key="book.id">
+                <div class="col" v-for="book in books" :key="book.id">
                     <div class="card" style="width: 20rem">
                         <img
                             :src="
                                 book.image
                                     ? `/storage/images/${book.image}`
-                                    : `https://picsum.photos/318?random=${
-                                          index + 1
-                                      }`
+                                    : 'https://placehold.co/318'
                             "
                             class="card-img-top"
                             alt="..."
@@ -92,7 +98,10 @@
                                     book.title
                                 }}</a>
                             </h5>
-                            <p class="card-text text-truncate">
+                            <p
+                                class="card-text text-truncate"
+                                style="height: 25px"
+                            >
                                 {{ book.description }}
                             </p>
                         </div>
@@ -200,6 +209,16 @@ export default {
         },
         handleSearch() {
             this.filter.search = this.searchText;
+        },
+        resetFilter() {
+            this.searchText = "";
+
+            this.filter = {
+                search: "",
+                author_id: "",
+                category_id: "",
+                publisher_id: "",
+            };
         },
     },
 };
