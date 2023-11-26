@@ -2,20 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Author;
+use App\Models\Category;
+use App\Models\Publisher;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -23,6 +15,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $authors = Author::orderBy('name')->get(['id', 'name']);
+        $categories = Category::orderBy('name')->get(['id', 'name']);
+        $publishers = Publisher::orderBy('name')->get(['id', 'name']);
+
+        return view('home', compact('authors', 'categories', 'publishers'));
     }
 }

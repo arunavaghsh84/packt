@@ -16,7 +16,14 @@ import { createApp } from 'vue';
 const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
+import Books from './components/Books.vue';
+import BookList from './components/BookList.vue';
+import BookForm from './components/BookForm.vue';
+
 app.component('example-component', ExampleComponent);
+app.component('books', Books);
+app.component('book-list', BookList);
+app.component('book-form', BookForm);
 
 /**
  * The following block of code may be used to automatically register your
